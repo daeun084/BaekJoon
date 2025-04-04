@@ -1,15 +1,16 @@
-s = list(map(str, input().strip()))
+import sys
+input = sys.stdin.readline
 
-mem = [[0 for _ in range(len(s) + 1)] for _ in range(28)]
+s = input().rstrip()
+mem = [[0 for _ in range(len(s) + 1)] for _ in range(26)]
 for i in range(len(s) + 1):
-    for j in range(1, 28):
-        if ord(s[i - 1]) - 96 == j: # ascii
-            mem[j][i] = mem[j][i - 1] + 1
-        else:
-            mem[j][i] = mem[j][i - 1]
+    alpha = ord(s[i - 1]) - 97 # ascii
+    for j in range(26):
+        mem[j][i] = mem[j][i - 1]
+    mem[alpha][i] += 1
 
 q = int(input())
 for _ in range(q):
-    a, l, r = map(str, input().split())
-    alpha = mem[ord(a) - 96]
+    a, l, r = input().split()
+    alpha = mem[ord(a) - 97]
     print(alpha[int(r) + 1] - alpha[int(l)])
