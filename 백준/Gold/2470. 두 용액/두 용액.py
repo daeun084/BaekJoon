@@ -13,18 +13,10 @@ while left < right:
         left_v = arr[left]
         right_v = arr[right]
         result = val
-
-        if abs(right_v) > abs(left_v):
-            right -= 1
-        else:
-            left += 1
-    elif val > result:
-        if abs(arr[right]) > abs(arr[left]):
-            right -= 1
-        else:
-            left += 1
-    else:
+    
+    if abs(arr[right]) > abs(arr[left]):
         right -= 1
+    else:
         left += 1
 
 print(left_v, right_v, end=' ')
