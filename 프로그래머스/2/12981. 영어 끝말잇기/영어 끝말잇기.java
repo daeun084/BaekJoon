@@ -3,6 +3,7 @@ import java.util.*;
 class Solution {
     public int[] solution(int n, String[] words) {
         int cnt = 0;
+        Set<String> set = new HashSet<>();
         
         while (cnt < words.length) {
             cnt += 1;
@@ -16,10 +17,8 @@ class Solution {
                 }
             }
             
-            for (int i = 0; i < cnt - 1; i++) {
-                if (words[i].equals(word)) {
-                    return handleAnswer(n, cnt);
-                }
+            if (!set.add(word)) {
+                return handleAnswer(n, cnt);
             }
         }
         
